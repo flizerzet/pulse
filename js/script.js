@@ -5,7 +5,7 @@ $(document).ready(function(){
 		nextArrow: '<button type="button" class="slick-next"><img src="img/icons/right-arrow.png"></button>',
 		responsive: [
 			{
-				breakpoint: 768,
+				breakpoint: 769,
 				settings: {
 					infinite: true,
 					dots: true,
@@ -13,19 +13,21 @@ $(document).ready(function(){
 				}
 			},
 			{
-				breakpoint: 600,
+				breakpoint: 576,
 				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2
+					infinite: true,
+					dots: true,
+					arrows: false
 					}
 			},
 			{
 				breakpoint: 480,
 				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
+					infinite: true,
+					dots: true,
+					arrows: false
+				}
 			}
-		}
 		]
 	});
 
@@ -104,6 +106,20 @@ $(document).ready(function(){
 
 			$('form').trigger('reset')
 		});
+		return false;
+	});
+
+	$(window).scroll(function(){
+		if ($(this).scrollTop()>1600) {
+			$('.page-up').fadeIn();
+		} else{
+			$('.page-up').fadeOut();
+		}
+	});
+
+	$("a[href=#up]").click(function(){
+		const _href = $(this).attr('href');
+		$('html, body').animate({scrollTop: $(_href).offset().top+'px'});
 		return false;
 	});
 }); 
